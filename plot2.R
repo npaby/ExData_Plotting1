@@ -1,0 +1,6 @@
+importData <- read.csv2("./household_power_consumption.txt")
+subsettedData <- subset(importData,importData$Date== c("1/2/2007","2/2/2007"))
+dateAndTime <- strptime(paste(subsettedData$Date, subsettedData$Time, sep=" "), "%d/%m/%Y %H:%M:%S") 
+plot(dateAndTime,subsettedData$Global_active_power, type="l", xlab="", ylab="Global Active Power in kw")
+png("plot2.png", width=480, height=480)
+dev.off()
